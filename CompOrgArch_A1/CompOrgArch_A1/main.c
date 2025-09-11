@@ -11,7 +11,7 @@
 int main(){
     // Open input and output files
     FILE *inputf = fopen("A1_inputs.txt", "r");
-    FILE *outputf = fopen("outputs.txt", "w");
+    FILE *outputf = fopen("output.txt", "w");
 
     //check if files opened successfully
     if (!inputf || !outputf) {
@@ -159,4 +159,5 @@ int main(){
     fclose(outputf);
 
     return 0;
+
 }
