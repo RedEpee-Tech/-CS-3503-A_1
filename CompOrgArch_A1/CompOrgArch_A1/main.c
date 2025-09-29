@@ -8,9 +8,9 @@
 
 
 
-int main(){
+int main(void){
     // Open input and output files
-    FILE *inputf = fopen("A1_inputs.txt", "r");
+    FILE *inputf = fopen("a2_test.txt", "r");
     FILE *outputf = fopen("output.txt", "w");
 
     //check if files opened successfully
@@ -23,6 +23,9 @@ int main(){
     int passed = 0;
     int failed = 0;
     char line[256];
+    char out = 0;
+
+
 
     while (fgets(line, sizeof(line), inputf) != NULL) {
 
@@ -147,10 +150,119 @@ int main(){
             } else {
                 fprintf(outputf, "Test %d: print_tables(%u)-> [ FORMATTED OUTPUT CHECK ] [PASS]\nExpected:\n%s\nGot:\n%s\n", test_num, number, expected, buffer);
                 failed++;
-            }
+            }    
+        }
 
+
+        //assignment 2 tests prints
+
+        else if (strstr(line, "oct_to_bin")) {
+            char* octal = tokens[1];
+            char* expected = tokens[2];
+
+            oct_to_bin(octal, output);
+            //tests if output matches expected and prints to output file
+            if (strcmp(output, expected) == 0) {
+                fprintf(outputf, "Test %d: oct_to_bin(%s) -> Expected: %s, Got: %s [PASS]\n", test_num, octal, expected, output);
+                passed++;
+            } else {
+                fprintf(outputf, "Test %d: oct_to_bin(%s) -> Expected: %s, Got: %s [FAIL]\n", test_num, octal, expected, output);
+                failed++;
+            }
+            test_num++;
+            continue;
+        }
+        else if (strstr(line, "oct_to_hex")) {
+            char* octal = tokens[1];
+            char* expected = tokens[2];
+
+            oct_to_hex(octal, output);
+            //tests if output matches expected and prints to output file
+            if (strcmp(output, expected) == 0) {
+                fprintf(outputf, "Test %d: oct_to_hex(%s) -> Expected: %s, Got: %s [PASS]\n", test_num, octal, expected, output);
+                passed++;
+            } else {
+                fprintf(outputf, "Test %d: oct_to_hex(%s) -> Expected: %s, Got: %s [FAIL]\n", test_num, octal, expected, output);
+                failed++;
+            }
+            test_num++;
+            continue;
+        }
+        
+        
+        else if (strstr(line, "hex_to_bin")) {
+            char* hex_input = tokens[1];
+            char* expected = tokens[2];
+
+            hex_to_bin(hex_input, output);
+            //tests if output matches expected and prints to output file
+            if (strcmp(output, expected) == 0) {
+                fprintf(outputf, "Test %d: hex_to_bin(%s) -> Expected: %s, Got: %s [PASS]\n", test_num, hex_input, expected, output);
+                passed++;
+            } else {
+                fprintf(outputf, "Test %d: hex_to_bin(%s) -> Expected: %s, Got: %s [FAIL]\n", test_num, hex_input, expected, output);
+                failed++;
+            }
+            test_num++;
+            continue;
+        }
+        
+        else if (strstr(line, "to_sign_magnitude")) {
+            int32_t number = strtol(tokens[1], &endptr, 10);
+            char* expected = tokens[2];
+
+            to_sign_magnitude(number, output);
+            //tests if output matches expected and prints to output file
+            if (strcmp(output, expected) == 0) {
+                fprintf(outputf, "Test %d: to_sign_magnitude(%d) -> Expected: %s, Got: %s [PASS]\n", test_num, number, expected, output);
+                passed++;
+            } else {
+                fprintf(outputf, "Test %d: to_sign_magnitude(%d) -> Expected: %s, Got: %s [FAIL]\n", test_num, number, expected, output);
+                failed++;
+            }
+            test_num++;
+            continue;
+        }
+        else if (strstr(line, "to_ones_complement")) {
+            int32_t number = strtol(tokens[1], &endptr, 10);
+            char* expected = tokens[2];
+
+            to_ones_complement(number, output);
+            //tests if output matches expected and prints to output file
+            if (strcmp(output, expected) == 0) {
+                fprintf(outputf, "Test %d: to_ones_complement(%d) -> Expected: %s, Got: %s [PASS]\n", test_num, number, expected, output);
+                passed++;
+            } else {
+                fprintf(outputf, "Test %d: to_ones_complement(%d) -> Expected: %s, Got: %s [FAIL]\n", test_num, number, expected, output);
+                failed++;
+            }
+            test_num++;
+            continue;
             
         }
+        else if (strstr(line, "to_twos_complement")) {
+            int32_t number = strtol(tokens[1], &endptr, 10);
+            char* expected = tokens[2];
+
+            to_twos_complement(number, output);
+            //tests if output matches expected and prints to output file
+            if (strcmp(output, expected) == 0) {
+                fprintf(outputf, "Test %d: to_twos_complement(%d) -> Expected: %s, Got: %s [PASS]\n", test_num, number, expected, output);
+                passed++;
+            } else {
+                fprintf(outputf, "Test %d: to_twos_complement(%d) -> Expected: %s, Got: %s [FAIL]\n", test_num, number, expected, output);
+                failed++;
+            }
+            test_num++;
+            continue;
+        }
+
+        //if no function matched
+        // else {
+        //     fprintf(outputf, "Test %d: Unknown function in line: %s [SKIPPED]\n", test_num, line);
+        //     failed++;
+        //     test_num++;
+        // }
         
         
     }
@@ -159,5 +271,4 @@ int main(){
     fclose(outputf);
 
     return 0;
-
 }
