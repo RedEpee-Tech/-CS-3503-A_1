@@ -17,10 +17,10 @@ Joseph Montalvo
 ## Test Results
  If done correctly, the outputs.txt should state near the bottom:
  
-  For A1_inputs.txt(simple conversion)
+  For A1_inputs.txt(simple conversion):
   "Summary:100/100 PASSED"
   
-  For a2_test.txt(advanced conversion)
+  For a2_test.txt(advanced conversion):
   "Summary:51/51 PASSED"
   
 ## Notes
