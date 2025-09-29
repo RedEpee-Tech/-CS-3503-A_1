@@ -8,10 +8,15 @@ Joseph Montalvo
 
 ## Build Instructions
  1 Install GCC (Use MinGW. On Linux/Mac, GCC is usually pre-installed)
+ 
  2 Open a terminal or command prompt in your project directory (where main.c, convert.c, and convert.h are located).
+ 
  3 Compile the code in GCC using the input 'gcc main.c convert.c -o main.exe' (exclude .exe if on linux/MacOS )
+ 
  4 Before running the code, change the input file to the desired a2_test.txt(advanced conversion) or A1_inputs.txt(simple conversion) file
+ 
  4 Run the code using main.exe (make sure a2_test.txt is included if testing advanced conversion. Use A1_inputs.txt to test simple base conversions)
+ 
  5 Once the test results are run, they will be added to outputs.txt 
 
 ## Test Results
